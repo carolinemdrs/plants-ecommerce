@@ -15,12 +15,13 @@ class Home extends React.Component {
     render() {
         return(
             <div>
-                <Header />
+                 <Header />
                 <Toolbar>
                     <Menu />
                     <FilterbyName />
                 </Toolbar>
                 <CardContainer />
+           
             </div>
         )
     }

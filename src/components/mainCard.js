@@ -8,6 +8,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const CardStyled = styled(Card) `
    margin-bottom: 10%;
@@ -25,25 +26,27 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MainCard() {
+export default function MainCard(props) {
   const classes = useStyles();
+
+  
+
   return (
     <CardStyled className={classes.root}>
       <CardActionArea>
         <CardMedia
           component="img"
-          alt="Camélia"
+          alt={props.cardName}
           height="140"
-          image="https://static3.tcdn.com.br/img/img_prod/450860/muda_da_flor_camelia_rosa_1396_1_20190611093649.jpg"
-          title="Camélia"
+          image={props.cardImage}
+          title={props.cardName}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-             Camélia
+            {props.cardName}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+          <Typography variant="body2" color="blue" component="p">
+            {props.cardText}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -56,3 +59,8 @@ export default function MainCard() {
   );
 }
 
+MainCard.propTypes = {
+  cardName: PropTypes.object.isRequired,
+  cardImage: PropTypes.object.isRequired,
+  cardText: PropTypes.object.isRequired,
+};

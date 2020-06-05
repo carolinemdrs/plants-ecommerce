@@ -1,6 +1,8 @@
 import React from 'react';
-import Card from './mainCard';
-import styled from 'styled-components'
+import MainCard from './mainCard';
+import styled from 'styled-components';
+import { connect } from "react-redux";
+
 
 const MainContainer = styled.div `
     display: grid;
@@ -10,21 +12,42 @@ const MainContainer = styled.div `
     justify-items: center;
 `
 
-const CardContainer = () => {
+const CardContainer = (props) => {
     return (
         <MainContainer>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {props.cardList.map(cardList => {
+                return <MainCard
+                            cardName={cardList.cardName} 
+                            cardImage={cardList.cardImage}
+                            cardText={cardList.cardText}
+                />    
+            })}
         </MainContainer>
     )
 
 }
+function mapStateToProps (state) {
+    return{
+      cardList: state.cardList,
+    }
+  }
+  
+  
+export default connect (mapStateToProps, null)(CardContainer)
 
-export default CardContainer
+
+/*
+ <MainContainer>
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+            <MainCard />
+        </MainContainer>
+
+
+*/

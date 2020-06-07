@@ -9,13 +9,13 @@ const MenuStyled = styled.div `
 `
 
 
-const Menu = () => {
+const Menu = (props) => {
     return (
         <MenuStyled>
-            <Button>Horta</Button>
-            <Button>Jardim</Button>
-            <Button>Ferramentas</Button>
-            <Button>Adubo</Button>
+            <Button onClick={() => {props.changeCategory("Horta") }}>Horta</Button>
+            <Button onClick={() => {props.changeCategory("Jardim") }}>Jardim</Button>
+            <Button onClick={() => {props.changeCategory("Ferramentas") }}>Ferramentas</Button>
+            <Button onClick={() => {props.changeCategory("Adubo") }}>Adubo</Button>
         </MenuStyled>
     )
 }

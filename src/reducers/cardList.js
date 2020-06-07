@@ -89,4 +89,13 @@ switch (action.type) {
 }
 };
 
+const filterList = (state = initialState, action) => {
+    switch (action.type) {
+        case " ":
+            return [ ...state, action.payload];
+        default:
+            return state;
+    }
+    };
+
 export default cardList;

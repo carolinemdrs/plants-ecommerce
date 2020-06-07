@@ -2,6 +2,7 @@ import React from 'react';
 import MainCard from './mainCard';
 import styled from 'styled-components';
 import { connect } from "react-redux";
+import PropTypes from 'prop-types'
 
 
 const MainContainer = styled.div `
@@ -13,9 +14,16 @@ const MainContainer = styled.div `
 `
 
 const CardContainer = (props) => {
+const listaFiltrada = props.listaDePlantas.filter((listaDePlantas)=>{
+        if(listaDePlantas.cardName.includes(props.name)){
+            return true
+        }else
+            return false
+    }
+)
     return (
         <MainContainer>
-            {props.cardList.map(cardList => {
+            {listaFiltrada.map(cardList => {
                 return <MainCard
                             cardName={cardList.cardName} 
                             cardImage={cardList.cardImage}
@@ -26,28 +34,10 @@ const CardContainer = (props) => {
     )
 
 }
-function mapStateToProps (state) {
-    return{
-      cardList: state.cardList,
-    }
-  }
+
+CardContainer.propTypes = {
+	listaDePlantas:PropTypes.func.isRequired
+};
+
   
-  
-export default connect (mapStateToProps, null)(CardContainer)
-
-
-/*
- <MainContainer>
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-            <MainCard />
-        </MainContainer>
-
-
-*/
+export default CardContainer

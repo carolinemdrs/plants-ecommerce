@@ -1,6 +1,7 @@
 import React from 'react';
 import search from '../imgs/search.svg';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const ImgStyled = styled.img `
     width: 30px;
@@ -19,14 +20,19 @@ const InputStyled = styled.input `
 `
 
 
-const FilterbyName = () => {
+const FilterbyName = (props) => {
     return (
         <Main>
             <ImgStyled src={search} />
-            <InputStyled></InputStyled>
+            <InputStyled onChange={ props.filterByName}></InputStyled>
         </Main>
     
     )
 }
 
 export default FilterbyName
+
+FilterbyName.propTypes = {
+	filterByName:PropTypes.func.isRequired
+};
+

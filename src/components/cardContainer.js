@@ -1,7 +1,6 @@
 import React from 'react';
 import MainCard from './mainCard';
 import styled from 'styled-components';
-import { connect } from "react-redux";
 import PropTypes from 'prop-types'
 
 
@@ -15,7 +14,7 @@ const MainContainer = styled.div `
 
 const CardContainer = (props) => {
 const listaFiltrada = props.listaDePlantas.filter((listaDePlantas)=>{
-        if(listaDePlantas.cardName.includes(props.name)){
+        if(listaDePlantas.cardName.includes(props.cardName)){
             return true
         }else
             return false
@@ -36,7 +35,8 @@ const listaFiltrada = props.listaDePlantas.filter((listaDePlantas)=>{
 }
 
 CardContainer.propTypes = {
-	listaDePlantas:PropTypes.func.isRequired
+    listaDePlantas:PropTypes.func.isRequired,
+    filterByName:PropTypes.func.isRequired,
 };
 
   

@@ -12,6 +12,7 @@ const MenuStyled = styled.div `
 const Menu = (props) => {
     return (
         <MenuStyled>
+            <Button onClick={() => {props.changeCategory("Todas") }}>Todos produtos</Button>
             <Button onClick={() => {props.changeCategory("Horta") }}>Horta</Button>
             <Button onClick={() => {props.changeCategory("Jardim") }}>Jardim</Button>
             <Button onClick={() => {props.changeCategory("Ferramentas") }}>Ferramentas</Button>

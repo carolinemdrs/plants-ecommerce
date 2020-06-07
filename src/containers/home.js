@@ -4,6 +4,8 @@ import Header from '../components/header';
 import Menu from '../components/menu';
 import FilterbyName from '../components/filter';
 import styled from 'styled-components';
+import search from '../imgs/search.svg';
+
 
 const Toolbar = styled.div `
     display: flex;
@@ -145,34 +147,34 @@ class Home extends React.Component {
     constructor(props) {
 		super(props)
 		this.state = {
-            name:"",
+            cardName:"",
             listaDePlantas:listaDePlantas,
             selectedCategory: "Todas",
-
-		}
-		
+		}	
 	}
     
 
     filterByName = (event) => {
-		this.setState({name:event.target.value})
+		this.setState({cardName:event.target.value})
 			console.log("teste")
 	}
 	changeCategory = (newCategory) =>{
 		this.setState({
 			selectedCategory: newCategory
         })
-        console.log("mudeicategoria")
     }
     
     filterList = () => {
-
 		return this.state.listaDePlantas.filter(produto => {
 			if(this.state.selectedCategory === "Todas") {
 				return true
 			}
 			
 			if(produto.category === this.state.selectedCategory) {
+				return true
+            }
+
+            if(produto.cardName === this.state.cardName) {
 				return true
 			}
 
@@ -189,7 +191,7 @@ class Home extends React.Component {
                     <Menu changeCategory={this.changeCategory} />
                     <FilterbyName filterByName={this.filterByName} />
                 </Toolbar>
-                <CardContainer listaDePlantas={productFiltredList} name={""}/>
+                <CardContainer listaDePlantas={productFiltredList} cardName={this.state.cardName}  selectedCategory={this.state.selectedCategory}/>
            
             </div>
         )

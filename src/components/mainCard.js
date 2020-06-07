@@ -29,9 +29,13 @@ const useStyles = makeStyles({
 export default function MainCard(props) {
   const classes = useStyles();
 
-  
 
+ function onClickBuy () {
+	console.log("OIssdsd")
+	}
+  
   return (
+    
     <CardStyled className={classes.root}>
       <CardActionArea>
         <CardMedia
@@ -51,7 +55,7 @@ export default function MainCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActionsStyled>
-        <ButtonStyled size="small" color="primary">
+        <ButtonStyled size="small" color="primary" onClick={() =>{onClickBuy()}} >
           Comprar
         </ButtonStyled>
       </CardActionsStyled>

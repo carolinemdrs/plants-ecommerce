@@ -8,7 +8,7 @@ const ImgStyled = styled.img `
     height:4vh;
     margin:5px;
 `
-const Main = styled.div `
+const MainFilter = styled.div `
    display:flex;
    height:5vh;
 `
@@ -19,13 +19,12 @@ const InputStyled = styled.input `
    
 `
 
-
 const FilterbyName = (props) => {
     return (
-        <Main>
+        <MainFilter>
             <ImgStyled src={search} />
             <InputStyled onChange={ props.filterByName}></InputStyled>
-        </Main>
+        </MainFilter>
     
     )
 }

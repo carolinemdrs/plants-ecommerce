@@ -5,10 +5,18 @@ import ferramenta from '../imgs/ferramenta.svg';
 
 const Logo = styled.img `
     width: 7%;
+
+    @media (max-width:667px) and (min-width:0px)  { 
+        display: none;
+      }
 `
 
 const Img = styled.img `
     width: 7%;
+
+    @media (max-width:667px) and (min-width:0px)  { 
+        width:20%;
+      }
 `
 const HeaderStyled = styled.div `
     display:flex;
@@ -18,6 +26,10 @@ const HeaderStyled = styled.div `
     font-weight:900;
     font-size:28px;
     padding:5px;
+
+    @media (max-width:667px) and (min-width:0px)  { 
+        font-weight:500;
+      }
 `
 
 const Header = () => {

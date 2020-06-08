@@ -5,6 +5,12 @@ import Button from '@material-ui/core/Button';
 const MenuStyled = styled.div `
     display:flex;
     justify-content:center;
+
+    @media (max-width:667px) and (min-width:375px)  { 
+        display: flex;
+        justify-content:center;
+        flex-direction:column;
+      }
     
 `
 

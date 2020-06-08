@@ -31,6 +31,7 @@ export default function MainCard(props) {
 
 
  function onClickBuy () {
+   
 	console.log("OIssdsd")
 	}
   

@@ -4,12 +4,28 @@ import Header from '../components/header';
 import Menu from '../components/menu';
 import FilterbyName from '../components/filter';
 import styled from 'styled-components';
-import search from '../imgs/search.svg';
+import Footer from '../components/footer';
 
 
 const Toolbar = styled.div `
     display: flex;
     justify-content:center;
+
+
+    @media (max-width:667px) and (min-width:0px)  { 
+        display: flex;
+        justify-content:center;
+        flex-direction:column;
+      }
+`
+
+const MainContainer = styled.div `
+    @media (max-width:667px) and (min-width:0px)  { 
+        display: flex;
+        justify-content:center;
+        flex-direction:column;
+        align-items:center;
+      }
 `
 
 const listaDePlantas = [
@@ -150,20 +166,31 @@ class Home extends React.Component {
             cardName:"",
             listaDePlantas:listaDePlantas,
             selectedCategory: "Todas",
+            currentPage:"ProductList",
+            selectedProduct: undefined,
 		}	
 	}
     
-
     filterByName = (event) => {
 		this.setState({cardName:event.target.value})
-			console.log("teste")
-	}
+     }
+    
 	changeCategory = (newCategory) =>{
 		this.setState({
 			selectedCategory: newCategory
         })
-    }
+     }
     
+     onChangeSelectedProduct = (product) => {
+		this.setState({selectedProduct:product})
+	 }
+
+     goToPage = (pageName) => {
+		this.setState({ currentPage: pageName })
+	}
+
+
+
     filterList = () => {
 		return this.state.listaDePlantas.filter(produto => {
 			if(this.state.selectedCategory === "Todas") {
@@ -181,19 +208,23 @@ class Home extends React.Component {
 			return false
 		})     
 	
-	}
+    }
+    
+
     render() {
         const productFiltredList = this.filterList()
         return(
-            <div>
-                 <Header />
+            <MainContainer>
+                <Header />
                 <Toolbar>
                     <Menu changeCategory={this.changeCategory} />
                     <FilterbyName filterByName={this.filterByName} />
                 </Toolbar>
-                <CardContainer listaDePlantas={productFiltredList} cardName={this.state.cardName}  selectedCategory={this.state.selectedCategory}/>
-           
-            </div>
+                <CardContainer listaDePlantas={productFiltredList} 
+                cardName={this.state.cardName}  
+                selectedCategory={this.state.selectedCategory}/>
+                <Footer />
+            </MainContainer>
         )
     }
 }
